@@ -1,5 +1,4 @@
 ## Python unittest automation Lambdatest
-=======================
 
 Python selenium automation sample test for Lambdatest Cloud GRID.
 
