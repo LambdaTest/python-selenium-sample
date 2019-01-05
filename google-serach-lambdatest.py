@@ -3,17 +3,16 @@ LambdaTest selenium automation sample example
 Configuration
 ----------
 username: Username can be found at automation dashboard
-accessToken:  AccessToken can be genarated from automation dashboard or profile section
+accessToken:  AccessToken can be generated from automation dashboard or profile section
 
 Result
 -------
-Execute Test on lambdatest Distributed Grid perform selenium automation based 
+Execute Python Automation Tests on LambdaTest Distributed Selenium Grid 
 """
 import unittest
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-
 
 
 class LTAutomate(unittest.TestCase):
@@ -22,8 +21,8 @@ class LTAutomate(unittest.TestCase):
     Setup remote driver
     Params
     ----------
-    platfrom : Supported platfrom - (Windows 10, Windows 8.1, Windows 8, Windows 7,  macOS High Sierra, macOS Sierra, OS X El Capitan, OS X Yosemite, OS X Mavericks)
-    browserName : Supported platfrom - (chrome, firefox, Internet Explorer, MicrosoftEdge)
+    platform : Supported platform - (Windows 10, Windows 8.1, Windows 8, Windows 7,  macOS High Sierra, macOS Sierra, OS X El Capitan, OS X Yosemite, OS X Mavericks)
+    browserName : Supported platform - (chrome, firefox, Internet Explorer, MicrosoftEdge)
     version :  Supported list of version can be found at https://www.lambdatest.com/capabilities-generator/
 
     Result
@@ -32,7 +31,7 @@ class LTAutomate(unittest.TestCase):
     def setUp(self):
         # username: Username can be found at automation dashboard
         username="{username}"  
-        # accessToken:  AccessToken can be genarated from automation dashboard or profile section
+        # accessToken:  AccessToken can be generated from automation dashboard or profile section
         accessToken="{accessToken}"
         # gridUrl: gridUrl can be found at automation dashboard
         gridUrl = "beta-hub.lambdatest.com/wd/hub"
@@ -54,7 +53,7 @@ class LTAutomate(unittest.TestCase):
         # URL: https://{username}:{accessToken}@beta-hub.lambdatest.com/wd/hub
         url = "https://"+username+":"+accessToken+"@"+gridUrl
         
-        print("Initiating remote driver on platfrom: "+desired_cap["platform"]+" browser: "+desired_cap["browserName"]+" version: "+desired_cap["version"])
+        print("Initiating remote driver on platform: "+desired_cap["platform"]+" browser: "+desired_cap["browserName"]+" version: "+desired_cap["version"])
         self.driver = webdriver.Remote(
             desired_capabilities=desired_cap,
             command_executor= url
@@ -71,7 +70,7 @@ class LTAutomate(unittest.TestCase):
     """
     def test_search_in_google(self):
         driver = self.driver
-        print("Driver initiated sucessfully.  Navigate url")
+        print("Driver initiated successfully.  Navigate url")
         driver.get("https://www.google.com/ncr")
 
         print("Searching lambdatest on google.com ")
