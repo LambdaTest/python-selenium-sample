@@ -36,7 +36,7 @@ class LTAutomate(unittest.TestCase):
         # accessToken:  AccessToken can be genarated from automation dashboard or profile section
         accessToken="{accessToken}"
         # gridUrl: gridUrl can be found at automation dashboard
-        gridUrl = "beta-hub.lambdatest.com/wd/hub"
+        gridUrl = "hub.lambdatest.com/wd/hub"
         
         desired_cap = {
             'platform' : "win10", 
