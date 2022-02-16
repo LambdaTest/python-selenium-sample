@@ -1,4 +1,4 @@
-# Python-Pytest-Selenium
+# Python-Selenium-Sample
 
 ![MSTest](https://opengraph.githubassets.com/8039186e9aebcc17be88d53ac4b85364a56f6aae503057e0ebf36dfcc5b5cc32/LambdaTest/python-selenium-sample)
 
@@ -47,16 +47,16 @@ Step 4. Inside Python-Selenium-Sample folder, export the Lambda-test Credentials
 export LT_USERNAME="YOUR_USERNAME"
 export LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
+
 <p align="center">
    <b>For Windows:</b>
+   
 ```
-
 set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
 
 Step 5. To run your first test.
-
 ```
 python lambdatest.py
 ```
