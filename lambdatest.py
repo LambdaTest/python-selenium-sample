@@ -2,8 +2,8 @@ import unittest
 import sys
 from selenium import webdriver
 
-username = "firdausia" # Replace the username
-access_key = "U9X9M7Ck8lClEDPqyF87KOERu4uwbIjoOXBPxj9ThLfGHc9gA5" # Replace the access key
+username = "Your Username" # Replace the username
+access_key = "Your Access Key" # Replace the access key
 
 class FirstSampleTest(unittest.TestCase):
     # Generate capabilites from here: https://www.lambdatest.com/capabilities-generator/
