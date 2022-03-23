@@ -20,7 +20,7 @@ class FirstSampleTest(unittest.TestCase):
                 "platformName": "Windows 11",
                 "selenium_version": "4.0.0",
                 "console": 'true',  # Enable or disable console logs
-                "network": 'true'   # Enable or disable network logs
+                "network": 'true'  # Enable or disable network logs
             },
             "browserName": "Chrome",
             "browserVersion": "98.0",
