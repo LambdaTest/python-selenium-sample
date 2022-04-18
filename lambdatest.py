@@ -1,4 +1,3 @@
-
 import unittest
 import time
 import os
@@ -22,7 +21,7 @@ class FirstSampleTest(unittest.TestCase):
                 "console": 'true',  # Enable or disable console logs
                 "network": 'true'  # Enable or disable network logs
             },
-            "browserName": "Chrome",
+            "browserName": "firefox",
             "browserVersion": "98.0",
         }
 
@@ -31,9 +30,7 @@ class FirstSampleTest(unittest.TestCase):
                 username, access_key),
             desired_capabilities=desired_caps)
 
-
-# tearDown runs after each test case
-
+    # tearDown runs after each test case
 
     def tearDown(self):
         self.driver.quit()
@@ -62,6 +59,7 @@ class FirstSampleTest(unittest.TestCase):
 
         # Searching for the results
         search = driver.find_element(By.XPATH, "//*[@id='search']")
+        print("Search button is displayed " + str(search.is_displayed()))
         search.click()
         driver.implicitly_wait(3)
 
