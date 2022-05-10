@@ -60,6 +60,7 @@ class FirstSampleTest(unittest.TestCase):
         # Searching for the results
         search = driver.find_element(By.XPATH, "//*[@id='search']")
         print("Search button is displayed " + str(search.is_displayed()))
+        assert search.is_displayed(), "Search is not displayed"
         search.click()
         driver.implicitly_wait(3)
 
