@@ -22,12 +22,12 @@ class FirstSampleTest(unittest.TestCase):
                 "console": 'true',  # Enable or disable console logs
                 "network": 'true'  # Enable or disable network logs
             },
-            "browserName": "Chrome",
-            "browserVersion": "98.0",
+            "browserName": "firefox",
+            "browserVersion": "latest",
         }
 
         self.driver = webdriver.Remote(
-            command_executor="https://{}:{}@hub.lambdatest.com/wd/hub".format(
+            command_executor="http://{}:{}@hub.lambdatest.com/wd/hub".format(
                 username, access_key),
             desired_capabilities=desired_caps)
 
@@ -62,6 +62,7 @@ class FirstSampleTest(unittest.TestCase):
 
         # Searching for the results
         search = driver.find_element(By.XPATH, "//*[@id='search']")
+        assert search.is_displayed(), "Search is not displayed"
         search.click()
         driver.implicitly_wait(3)
 
