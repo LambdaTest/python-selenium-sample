@@ -98,7 +98,7 @@ You can generate capabilities for your test requirements with the help of our in
 **Step 5:** You would need to execute the below command in your terminal/cmd.
 
 ```bash
-python google-search-lambdatest.py
+python lambdatest.py
 ```
 Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on LambdaTest automation dashboard. 
 
