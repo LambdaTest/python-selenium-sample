@@ -43,6 +43,9 @@ class FirstSampleTest(unittest.TestCase):
 
         # try:
         driver = self.driver
+        driver.implicitly_wait(10)
+        driver.set_page_load_timeout(30)
+        driver.set_window_size(1920, 1080)
 
         # Url
         print('Loading URL')
