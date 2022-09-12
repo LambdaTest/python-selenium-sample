@@ -15,22 +15,29 @@ class FirstSampleTest(unittest.TestCase):
     def setUp(self):
         desired_caps = {
             'LT:Options': {
-                "build": "Python Demo",  # Change your build name here
+                "build": "Python Slack Test Demo",  # Change your build name here
                 "name": "Python Demo Test",  # Change your test name here
                 "platformName": "Windows 11",
                 "selenium_version": "4.0.0",
                 "console": 'true',  # Enable or disable console logs
-                "network": 'true'  # Enable or disable network logs
+                "network": 'true',  # Enable or disable network logs
+                #Enable Smart UI Project
+                #"smartUI.project": "<Project Name>"
             },
             "browserName": "firefox",
             "browserVersion": "latest",
         }
 
+        # Steps to run Smart UI project (https://beta-smartui.lambdatest.com/)
+        # Step - 1 : Change the hub URL to @beta-smartui-hub.lambdatest.com/wd/hub
+        # Step - 2 : Add "smartUI.project": "<Project Name>" as a capability above
+        # Step - 3 : Run "driver.execute_script("smartui.takeScreenshot")" command wherever you need to take a screenshot 
+        # Note: for additional capabilities navigate to https://www.lambdatest.com/support/docs/test-settings-options/
+
         self.driver = webdriver.Remote(
             command_executor="http://{}:{}@hub.lambdatest.com/wd/hub".format(
                 username, access_key),
             desired_capabilities=desired_caps)
-
 
 # tearDown runs after each test case
 
@@ -56,6 +63,9 @@ class FirstSampleTest(unittest.TestCase):
         location = driver.find_element(By.ID, "Bali")
         location.click()
         print("Location is selected as Bali.")
+
+        #Take Smart UI screenshot
+        #driver.execute_script("smartui.takeScreenshot")
 
         # Let's select the number of guests
         driver.find_element(By.ID, "headlessui-listbox-button-5").click()
