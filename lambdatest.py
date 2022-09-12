@@ -15,7 +15,7 @@ class FirstSampleTest(unittest.TestCase):
     def setUp(self):
         desired_caps = {
             'LT:Options': {
-                "build": "Python Slack Test Demo",  # Change your build name here
+                "build": "Python Demo",  # Change your build name here
                 "name": "Python Demo Test",  # Change your test name here
                 "platformName": "Windows 11",
                 "selenium_version": "4.0.0",
