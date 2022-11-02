@@ -1,6 +1,5 @@
 
 import unittest
-import time
 import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -56,42 +55,34 @@ class FirstSampleTest(unittest.TestCase):
 
         # Url
         print('Loading URL')
-        driver.get("https://stage-demo.lambdatest.com/")
+        driver.get("https://todo-app.lambdatest.io/index.html")
 
-        # Let's select the location
-        driver.find_element(By.ID, "headlessui-listbox-button-1").click()
-        location = driver.find_element(By.ID, "Bali")
+        # Let's click on a element
+        driver.find_element(By.NAME, "li1").click()
+        location = driver.find_element(By.NAME, "li2")
         location.click()
-        print("Location is selected as Bali.")
+        print("Clicked on the second element")
 
         #Take Smart UI screenshot
         #driver.execute_script("smartui.takeScreenshot")
 
-        # Let's select the number of guests
-        driver.find_element(By.ID, "headlessui-listbox-button-5").click()
-        guests = driver.find_element(By.ID, "2")
-        guests.click()
-        print("Number of guests are selected.")
+        # Let's add a checkbox
+        driver.find_element(By.ID, "sampletodotext").send_keys("LambdaTest")
+        add_button = driver.find_element(By.ID, "addbutton")
+        add_button.click()
+        print("Added LambdaTest checkbox")
 
-        # Searching for the results
-        search = driver.find_element(By.XPATH, "//*[@id='search']")
-        assert search.is_displayed(), "Search is not displayed"
+        # print the heading
+        search = driver.find_element(By.CSS_SELECTOR, ".container h2")
+        assert search.is_displayed(), "heading is not displayed"
+        print(search.text)
         search.click()
         driver.implicitly_wait(3)
 
-        # Let's select one of the hotels for booking
-        reserve = driver.find_element(By.ID, "reserve-now")
-        reserve.click()
-        driver.implicitly_wait(3)
-        proceed = driver.find_element(By.ID, "proceed")
-        proceed.click()
-        driver.implicitly_wait(3)
-        print("Booking is confirmed.")
-
         # Let's download the invoice
-        download = driver.find_element(By.ID, "invoice")
-        if (download.is_displayed()):
-            download.click()
+        heading = driver.find_element(By.CSS_SELECTOR, ".container h2")
+        if heading.is_displayed():
+            heading.click()
             driver.execute_script("lambda-status=passed")
             print("Tests are run successfully!")
         else:
