@@ -55,7 +55,7 @@ class FirstSampleTest(unittest.TestCase):
 
         # Url
         print('Loading URL')
-        driver.get("https://todo-app.lambdatest.io/index.html")
+        driver.get("https://stage-lambda-devops-use-only.lambdatestinternal.com/To-do-app/index.html")
 
         # Let's click on a element
         driver.find_element(By.NAME, "li1").click()
