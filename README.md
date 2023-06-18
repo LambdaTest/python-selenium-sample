@@ -80,8 +80,8 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 
 **Step 4:** In the python script, you need to update your test capabilities. In this code, we are passing browser, browser version, and operating system information, along with LambdaTest Selenium grid capabilities via capabilities object. 
 
-The capabilities object in the above code are defined as:
-You can change the desired capibilite's
+The capabilities in the below code are defined as:
+
 ```python
 options = ChromeOptions()
 options.browser_version = "114.0"
