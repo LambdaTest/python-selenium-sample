@@ -3,6 +3,7 @@ import unittest
 import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 username = os.getenv("LT_USERNAME")  # Replace the username
 access_key = os.getenv("LT_ACCESS_KEY")  # Replace the access key
@@ -35,7 +36,7 @@ options.set_capability('LT:Options', lt_options)
         # Note: for additional capabilities navigate to https://www.lambdatest.com/support/docs/test-settings-options/
 
 driver = webdriver.Remote(
-            command_executor="http://{}:{}@beta-smartui-hub.lambdatest.com/wd/hub".format(
+            command_executor="http://{}:{}@hub.lambdatest.com/wd/hub".format(
                 username, access_key),options=options)
 
 # tearDown runs after each test case
