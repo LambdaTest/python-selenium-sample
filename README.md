@@ -81,15 +81,22 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 **Step 4:** In the python script, you need to update your test capabilities. In this code, we are passing browser, browser version, and operating system information, along with LambdaTest Selenium grid capabilities via capabilities object. 
 
 The capabilities object in the above code are defined as:
-
+You can change the desired capibilite's
 ```python
-capabilities = {
-        "build": "your build name",
-        "name": "your test name",
-        "platformName": "Windows 10"
-        "browserName": "Chrome",
-        "browserVersion": "latest",
-}
+options = ChromeOptions()
+options.browser_version = "114.0"
+options.platform_name = "macOS High Sierra"
+lt_options = {}
+lt_options["video"] = True
+lt_options["resolution"] = "1920x1080"
+lt_options["network"] = True
+lt_options["build"] = "test_build"
+lt_options["project"] = "unit_testing"
+lt_options["smartUI.project"] = "test"
+lt_options["name"] = "basic_unit_selinium"
+lt_options["w3c"] = True
+lt_options["plugin"] = "python-python"
+options.set_capability('LT:Options', lt_options)
 ```
 You can generate capabilities for your test requirements with the help of our inbuilt [Desired Capability Generator](https://www.lambdatest.com/capabilities-generator/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample).
 
