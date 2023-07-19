@@ -20,6 +20,7 @@ class AutoHealDemoTest(unittest.TestCase):
                 "build": "Auto Heal Demo",
                 "name": "Auto Heal Disable",
                 "autoHeal": 'false',
+                "geoLocation": "IN"
             },
             "browserName": "Chrome"
         }
@@ -88,7 +89,7 @@ class AutoHealDemoTest(unittest.TestCase):
     def loadAmazonWebsite(self):
         driver = self.driver
         print('Loading URL')
-        driver.get("https://www.amazon.in")
+        driver.get("https://www.amazon.com")
         driver.set_page_load_timeout(30)
         time.sleep(10)
         print("Page Loaded Successfully.")
