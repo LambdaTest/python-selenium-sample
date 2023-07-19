@@ -74,7 +74,9 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 
 ## Run Your First Test
 
->**Test Scenario**: The [lambdatest.py](https://github.com/LambdaTest/python-selenium-sample/blob/master/lambdatest.py) sample script tests a simple to-do application with basic functionalities like mark items as done, add items in a list, calculate total pending items etc.
+>**Test Scenario**: 
+
+
 
 ### Configuration Of Your Test Capabilities
 
@@ -83,28 +85,34 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 The capabilities object in the above code are defined as:
 
 ```python
-capabilities = {
-        "build": "your build name",
-        "name": "your test name",
-        "platformName": "Windows 10"
-        "browserName": "Chrome",
-        "browserVersion": "latest",
+ # Desired capabilities for the test
+        desired_caps = {
+            'LT:Options': {
+                "build": "Auto Heal Demo",
+                "name": "Auto Heal Enabled",
+                "platformName": "Windows 10",
+                "autoHeal": 'true',
+            },
+            "browserName": "Chrome",
+            "browserVersion": "latest",
+        }
 }
 ```
 You can generate capabilities for your test requirements with the help of our inbuilt [Desired Capability Generator](https://www.lambdatest.com/capabilities-generator/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample).
 
 ### Executing The Test
 
-**Step 5:** You would need to execute the below command in your terminal/cmd.
+**Execution Steps:**
+1. Install the required libraries:
+   ```
+   pip install -r requirements.txt
+   ```
 
-```bash
-python lambdatest.py
-```
-For python3 use
-```bash
-python3 lambdatest.py
-```
 
+3. Run the test:
+   ```
+   python autoHealingEnableDemo.py && python autoHealingDisableDemo.py
+   ```
 Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on LambdaTest automation dashboard. 
 
 

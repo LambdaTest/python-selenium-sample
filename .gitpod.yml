@@ -1,6 +1,6 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: pip install selenium && export PYTHONWARNINGS="ignore:Unverified HTTPS request"  # runs during prebuild
-    command: python lambdatest.py
+  - init: pip install requirements.txt && export PYTHONWARNINGS="ignore:Unverified HTTPS request"  # runs during prebuild
+    command: python autoHealingEnableDemo.py && python autoHealingDisableDemo.py
 
 
