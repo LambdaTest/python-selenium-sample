@@ -74,9 +74,18 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 
 ## Run Your First Test
 
->**Test Scenario**: 
+>**Test Scenario**: This test automates the process of searching for a book titled "Python Programming" in the Books category on Amazon.in using the LambdaTest platform.
 
+**📋 Test Steps**
+- The script initializes a remote WebDriver session on LambdaTest with the desired capabilities (Windows 10, Chrome browser).
+- The Amazon.in website is loaded.
+- **The script updates the ID attributes of the search submit button and search textbox.**
+- The search category dropdown is clicked to reveal the list of categories.
+- The 'Books' category is selected from the dropdown.
+- The term "Python Programming" is entered into the search textbox.
+- The search button is clicked to initiate the search.
 
+With `AutoHeal` Enable, the test scenario passed even after updating the ID attribute of submit button.
 
 ### Configuration Of Your Test Capabilities
 

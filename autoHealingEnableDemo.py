@@ -19,11 +19,9 @@ class AutoHealDemoTest(unittest.TestCase):
             'LT:Options': {
                 "build": "Auto Heal Demo",
                 "name": "Auto Heal Enabled",
-                "platformName": "Windows 10",
                 "autoHeal": 'true',
             },
             "browserName": "Chrome",
-            "browserVersion": "latest",
         }
 
         # Initialize the remote webdriver for LambdaTest

@@ -18,12 +18,10 @@ class AutoHealDemoTest(unittest.TestCase):
         desired_caps = {
             'LT:Options': {
                 "build": "Auto Heal Demo",
-                "name": "Auto Heal Enabled",
-                "platformName": "Windows 10",
+                "name": "Auto Heal Disable",
                 "autoHeal": 'false',
             },
-            "browserName": "Chrome",
-            "browserVersion": "latest",
+            "browserName": "Chrome"
         }
 
         # Initialize the remote webdriver for LambdaTest
