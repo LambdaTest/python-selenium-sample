@@ -44,13 +44,13 @@ Before you can start performing **Python** automation testing with **Selenium**,
 **Step 1:** Clone the LambdaTest’s python-selenium-sample repository and navigate to the code directory as shown below:
 
 ```bash
-git clone https://github.com/LambdaTest/python-selenium-sample
-cd python-selenium-sample
+git clone -b Python-AutoHealing-Demo https://github.com/LambdaTest/python-selenium-sample.git
+cd Python-AutoHealing-Demo
 ```
 
 **Step 2:** Download the driver from the link, or you can use **pip** to install it.
 ```bash
-pip install selenium
+pip install -r requirements.txt
 export PYTHONWARNINGS="ignore:Unverified HTTPS request"   //Disable ssl warning
 ```
 
@@ -107,7 +107,7 @@ The capabilities object in the above code are defined as:
         }
 }
 ```
-You can generate capabilities for your test requirements with the help of our inbuilt [Desired Capability Generator](https://www.lambdatest.com/capabilities-generator/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample).
+You can generate capabilities for your test requirements with the help of our inbuilt [Desired Capability Generator](https://www.lambdatest.com/capabilities-generator/?utm_source=github&utm_medium=repo&utm_campaign=python-autoheal-sample).
 
 ### Executing The Test
 
