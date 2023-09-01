@@ -35,15 +35,9 @@ options.set_capability('LT:Options', lt_options)
         # Step - 3 : Run "driver.execute_script("smartui.takeScreenshot")" command wherever you need to take a screenshot 
         # Note: for additional capabilities navigate to https://www.lambdatest.com/support/docs/test-settings-options/
 
-driver = webdriver.Remote(
-            command_executor="http://{}:{}@hub.lambdatest.com/wd/hub".format(
-                username, access_key),options=options)
-
-# tearDown runs after each test case
-
-
-    def tearDown(self):
-        self.driver.quit()
+class FirstSampleTest(unittest.TestCase):
+    def setUp(self):
+            driver = webdriver.Remote(command_executor="http://{}:{}@hub.lambdatest.com/wd/hub".format(username, access_key),options=options)
 
     # """ You can write the test cases here """
     def test_demo_site(self):
@@ -88,7 +82,9 @@ driver = webdriver.Remote(
             print("Tests are run successfully!")
         else:
             driver.execute_script("lambda-status=failed")
-
+# tearDown runs after each test case
+    def tearDown(self):
+        self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()
