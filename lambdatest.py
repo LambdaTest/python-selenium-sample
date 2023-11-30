@@ -3,29 +3,31 @@ import unittest
 import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 username = os.getenv("LT_USERNAME")  # Replace the username
 access_key = os.getenv("LT_ACCESS_KEY")  # Replace the access key
 
 
-class FirstSampleTest(unittest.TestCase):
-    # Generate capabilites from here: https://www.lambdatest.com/capabilities-generator/
-    # setUp runs before each test case and
-    def setUp(self):
-        desired_caps = {
-            'LT:Options': {
-                "build": "Python Demo",  # Change your build name here
-                "name": "Python Demo Test",  # Change your test name here
-                "platformName": "Windows 11",
-                "selenium_version": "4.0.0",
-                "console": 'true',  # Enable or disable console logs
-                "network": 'true',  # Enable or disable network logs
-                #Enable Smart UI Project
-                #"smartUI.project": "<Project Name>"
-            },
-            "browserName": "firefox",
-            "browserVersion": "latest",
-        }
+#paste your capibility options below 
+
+options = ChromeOptions()
+options.browser_version = "114.0"
+options.platform_name = "macOS High Sierra"
+lt_options = {}
+lt_options["username"] = username
+lt_options["accessKey"] = access_key
+lt_options["video"] = True
+lt_options["resolution"] = "1920x1080"
+lt_options["network"] = True
+lt_options["build"] = "test_build"
+lt_options["project"] = "unit_testing"
+lt_options["smartUI.project"] = "test"
+lt_options["name"] = "basic_unit_selinium"
+lt_options["w3c"] = True
+lt_options["plugin"] = "python-python"
+options.set_capability('LT:Options', lt_options)
+
 
         # Steps to run Smart UI project (https://beta-smartui.lambdatest.com/)
         # Step - 1 : Change the hub URL to @beta-smartui-hub.lambdatest.com/wd/hub
@@ -33,16 +35,9 @@ class FirstSampleTest(unittest.TestCase):
         # Step - 3 : Run "driver.execute_script("smartui.takeScreenshot")" command wherever you need to take a screenshot 
         # Note: for additional capabilities navigate to https://www.lambdatest.com/support/docs/test-settings-options/
 
-        self.driver = webdriver.Remote(
-            command_executor="http://{}:{}@hub.lambdatest.com/wd/hub".format(
-                username, access_key),
-            desired_capabilities=desired_caps)
-
-# tearDown runs after each test case
-
-
-    def tearDown(self):
-        self.driver.quit()
+class FirstSampleTest(unittest.TestCase):
+    def setUp(self):
+            driver = webdriver.Remote(command_executor="http://{}:{}@hub.lambdatest.com/wd/hub".format(username, access_key),options=options)
 
     # """ You can write the test cases here """
     def test_demo_site(self):
@@ -87,7 +82,9 @@ class FirstSampleTest(unittest.TestCase):
             print("Tests are run successfully!")
         else:
             driver.execute_script("lambda-status=failed")
-
+# tearDown runs after each test case
+    def tearDown(self):
+        self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()
