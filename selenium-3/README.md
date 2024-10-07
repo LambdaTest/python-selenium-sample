@@ -45,7 +45,7 @@ Before you can start performing **Python** automation testing with **Selenium**,
 
 ```bash
 git clone https://github.com/LambdaTest/python-selenium-sample
-cd python-selenium-sample
+cd python-selenium-sample/selenium-3
 ```
 
 **Step 2:** Download the driver from the link, or you can use **pip** to install it.
@@ -83,20 +83,16 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 The capabilities in the below code are defined as:
 
 ```python
-options = ChromeOptions()
-options.browser_version = "latest"
-options.platform_name = "macOS High Sierra"
-lt_options = {}
-lt_options["video"] = True
-lt_options["resolution"] = "1920x1080"
-lt_options["network"] = True
-lt_options["build"] = "test_build"
-lt_options["project"] = "unit_testing"
-lt_options["smartUI.project"] = "test"
-lt_options["name"] = "basic_unit_selinium"
-lt_options["w3c"] = True
-lt_options["plugin"] = "python-python"
-options.set_capability('LT:Options', lt_options)
+capability = {
+	"browserName": "Chrome",
+	"browserVersion": "latest",
+	"LT:Options": {
+    "username": username,
+		"accessKey": access_key,
+		"platformName": "Windows 10",
+        "build": "Selenium 3 Example"
+	}
+}
 ```
 You can generate capabilities for your test requirements with the help of our inbuilt [Desired Capability Generator](https://www.lambdatest.com/capabilities-generator/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample).
 
