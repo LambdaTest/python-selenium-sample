@@ -1,2 +1,2 @@
-urllib3==2.5.0
+urllib3==2.6.0
 selenium==4.38.0
