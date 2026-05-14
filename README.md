@@ -1,228 +1,113 @@
-# Run Selenium Tests With Python — TestMu AI (Formerly LambdaTest)
-
-![171934563-4806efd2-1154-494c-a01d-1def95657383 (1)](https://user-images.githubusercontent.com/70570645/172273386-fa9606ac-3e63-4b2e-8978-3142add3e038.png)
-
+# Run Selenium Tests with Python on TestMu AI (Formerly LambdaTest)
 
 <p align="center">
-  <a href="https://www.testmuai.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample" target="_bank">Blog</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample" target="_bank">Docs</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample" target="_bank">Learning Hub</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/newsletter/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample" target="_bank">Newsletter</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/certifications/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample" target="_bank">Certifications</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.youtube.com/@TestMuAI" target="_bank">YouTube</a>
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://pypi.org/project/selenium/"><img src="https://img.shields.io/pypi/v/selenium.svg?style=for-the-badge&labelColor=000000" alt="Selenium version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
 </p>
-&emsp;
-&emsp;
-&emsp;
 
-*Learn how to run your Python automation testing scripts on the TestMu AI platform*
+## Getting Started
 
-[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register)
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
+With TestMu AI (Formerly LambdaTest), you can run Python Selenium automation tests across real browsers and operating systems. This sample shows how to configure Python + Selenium to run on the TestMu AI cloud.
 
-## Table Of Contents
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
-* [Pre-requisites](#pre-requisites)
-* [Run Your First Test](#run-your-first-test)
-* [Local Testing With Python](#testing-locally-hosted-or-privately-hosted-projects)
+### Prerequisites
 
-## Prerequisites
+- Python 3 and pip (latest stable)
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-Before you can start performing **Python** automation testing with **Selenium**, you would need to:
+### Setup
 
-* Install the latest Python build from the [official website](https://www.python.org/downloads/). We recommend using the latest version.
-* Make sure **pip** is installed in your system. You can install **pip** from [here](https://pip.pypa.io/en/stable/installation/).
-* Download the latest **Selenium Client** and its **WebDriver bindings** from the [official website](https://www.selenium.dev/downloads/). Latest versions of **Selenium Client** and **WebDriver** are ideal for running your automation script on TestMu AI Selenium cloud grid.
-
-### Installing Selenium Dependencies And Tutorial Repo
-
-**Step 1:** Clone the TestMu AI’s python-selenium-sample repository and navigate to the code directory as shown below:
+Clone and install dependencies:
 
 ```bash
-git clone https://github.com/LambdaTest/python-selenium-sample
-cd python-selenium-sample
-```
-
-**Step 2:** Download the driver from the link, or you can use **pip** to install it.
-```bash
+git clone https://github.com/LambdaTest/python-selenium-sample && cd python-selenium-sample
 pip install -r requirements.txt
-export PYTHONWARNINGS="ignore:Unverified HTTPS request"   //Disable ssl warning
 ```
 
-### Setting Up Your Authentication
+Set your credentials as environment variables.
 
-Make sure you have your TestMu AI credentials with you to run test automation scripts. You can get these credentials from the [TestMu AI Automation Dashboard](https://automation.lambdatest.com/build/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample) or by your [TestMu AI Profile](https://accounts.lambdatest.com/login/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample).
+**macOS / Linux:**
 
-**Step 2:** Set TestMu AI **Username** and **Access Key** in environment variables.
-
-* For **Linux/macOS**:
-  
-  ```bash
-  export LT_USERNAME="YOUR_USERNAME" 
-  export LT_ACCESS_KEY="YOUR ACCESS KEY"
-  ```
-  * For **Windows**:
-  ```bash
-  set LT_USERNAME="YOUR_USERNAME" 
-  set LT_ACCESS_KEY="YOUR ACCESS KEY"
-  ```
-
-## Run Your First Test
-
->**Test Scenario**: The [lambdatest.py](https://github.com/LambdaTest/python-selenium-sample/blob/master/lambdatest.py) sample script tests a simple to-do application with basic functionalities like mark items as done, add items in a list, calculate total pending items etc.
-
-### Configuration Of Your Test Capabilities
-
-**Step 4:** In the python script, you need to update your test capabilities. In this code, we are passing browser, browser version, and operating system information, along with TestMu AI Selenium grid capabilities via capabilities object. 
-
-The capabilities in the below code are defined as:
-
-```python
-options = ChromeOptions()
-options.browser_version = "latest"
-options.platform_name = "macOS High Sierra"
-lt_options = {}
-lt_options["video"] = True
-lt_options["resolution"] = "1920x1080"
-lt_options["network"] = True
-lt_options["build"] = "test_build"
-lt_options["project"] = "unit_testing"
-lt_options["smartUI.project"] = "test"
-lt_options["name"] = "basic_unit_selinium"
-lt_options["w3c"] = True
-lt_options["plugin"] = "python-python"
-options.set_capability('LT:Options', lt_options)
+```bash
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+export LT_TUNNEL="YOUR_TUNNEL_NAME"
 ```
-You can generate capabilities for your test requirements with the help of our inbuilt [Desired Capability Generator](https://www.testmuai.com/capabilities-generator/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample).
 
-### Executing The Test
+**Windows:**
 
-**Step 5:** You would need to execute the below command in your terminal/cmd.
+```bash
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+set LT_TUNNEL="YOUR_TUNNEL_NAME"
+```
+
+### Run tests
 
 ```bash
 python lambdatest.py
 ```
-For python3 use
-```bash
-python3 lambdatest.py
+
+View results on your TestMu AI dashboard.
+
+### Local testing with TestMu AI Tunnel
+
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
+
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
+
+Add the following to your capabilities:
+
+```python
+"tunnel": True
 ```
 
-Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on TestMu AI automation dashboard. 
+## Contributions
 
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Python version, OS, and Selenium version.
 
-## Testing Locally Hosted Or Privately Hosted Projects
+## TestMu AI (Formerly LambdaTest) Community
 
-You can test your locally hosted or privately hosted projects with TestMu AI Selenium grid using TestMu AI Tunnel. All you would have to do is set up an SSH tunnel using tunnel and pass toggle `tunnel = True` via desired capabilities. TestMu AI Tunnel establishes a secure SSH protocol based tunnel that allows you in testing your locally hosted or privately hosted pages, even before they are live.
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-Refer our [TestMu AI Tunnel documentation](https://www.testmuai.com/support/docs/testing-locally-hosted-pages/) for more information.
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-Here’s how you can establish TestMu AI Tunnel.
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-Download the binary file of:
-* [TestMu AI Tunnel for Windows](https://downloads.lambdatest.com/tunnel/v3/windows/64bit/LT_Windows.zip)
-* [TestMu AI Tunnel for macOS](https://downloads.lambdatest.com/tunnel/v3/mac/64bit/LT_Mac.zip)
-* [TestMu AI Tunnel for Linux](https://downloads.lambdatest.com/tunnel/v3/linux/64bit/LT_Linux.zip)
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-Open command prompt and navigate to the binary folder.
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-Run the following command:
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-```bash
-LT -user {user’s login email} -key {user’s access key}
-```
-So if your user name is lambdatest@example.com and key is 123456, the command would be:
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-```bash
-LT -user lambdatest@example.com -key 123456
-```
-Once you are able to connect **TestMu AI Tunnel** successfully, you would just have to pass on tunnel capabilities in the code shown below :
+ð Find the new home for [LambdaTest](https://www.testmuai.com).
 
-**Tunnel Capability**
+### How LambdaTest Evolved into TestMu AI
 
-```
-"tunnel" : true
-```
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
 
-## Tutorials 📙
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-Check out our latest tutorials on Python automation testing 👇
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
 
-* [Why Python Is A Preferred Language For Test Automation?](https://www.testmuai.com/blog/python-automation-testing/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [7 Best Python Testing Frameworks](https://www.testmuai.com/blog/top-python-frameworks-in-2020-for-selenium-test-automation/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Selenium 4 With Python: All You Need To Know](https://www.testmuai.com/blog/selenium-with-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How to Set Up Selenium With Python for Modern Web Automation](https://www.testmuai.com/blog/selenium-webdriver-with-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Using Selenium and Python Hypothesis for Automation Testing](https://www.testmuai.com/blog/using-selenium-and-python-hypothesis-for-automation-testing/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Selenium Python Tutorial: Getting Started With BDD In Behave](https://www.testmuai.com/blog/selenium-python-behave-tutorial-bdd/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Selenium Python Tutorial: Getting Started With Pytest](https://www.testmuai.com/blog/selenium-python-pytest-testing-tutorial/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Selenium Python Tutorial: Running First PyUnit Script](https://www.testmuai.com/blog/using-pyunit-for-testing-a-selenium-python-test-suite/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Robot Framework with Selenium and Python](https://www.testmuai.com/blog/robot-framework-tutorial/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Getting Started With Selenium Python [Tutorial]](https://www.testmuai.com/blog/robot-framework-tutorial/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Running Python Selenium Test in Parallel With PyTest](https://www.testmuai.com/blog/robot-framework-tutorial/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Parallel Testing In Selenium WebDriver With Python Using Unittest](https://www.testmuai.com/blog/robot-framework-tutorial/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Automated Browser Testing with Opera and Selenium in Python](https://www.testmuai.com/blog/automated-browser-testing-with-opera-and-selenium-in-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Take A Screenshot Using Python & Selenium?](https://www.testmuai.com/blog/python-selenium-screenshots/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Drag And Drop In Selenium With Python?](https://www.testmuai.com/blog/drag-and-drop-in-selenium-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Switch Tabs In A Browser Using Selenium Python?](https://www.testmuai.com/blog/python-selenium-switch-tabs/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Get Page Source In Selenium Using Python?](https://www.testmuai.com/blog/how-to-get-page-source-in-selenium-webdriver/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Handle Dropdowns In Selenium WebDriver Using [Python?]](https://www.testmuai.com/blog/handling-dropdown-in-selenium-webdriver-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Do Parameterization In Pytest With Selenium?](https://www.testmuai.com/blog/parameterization-in-pytest-with-selenium/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Page Object Model (POM) In Selenium Python](https://www.testmuai.com/blog/page-object-model-in-selenium-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Read Configuration Files in Python Using Selenium](https://www.testmuai.com/blog/how-to-read-configuration-files-in-python-using-selenium/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Create an Automated Web Bot With Selenium in Python?](https://www.testmuai.com/blog/automated-web-bot-with-selenium-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How To Perform Web Scraping Using Selenium and Python?](https://www.testmuai.com/blog/web-scraping-using-selenium-and-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Adding Firefox Extensions With Selenium in Python](https://www.testmuai.com/blog/adding-firefox-extensions-with-selenium-in-python/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [How to Handle JavaScript Alert in Selenium WebDriver Using Python?](https://www.testmuai.com/blog/how-to-handle-javascript-alert-in-selenium-webdriver/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Use Selenium Wait for Page to Load With Python](https://www.testmuai.com/blog/selenium-wait-for-page-to-load/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [Selenium Python Cheat Sheet for Test Automation](https://www.testmuai.com/blog/selenium-python-cheat-sheet/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
 
+## Support
 
-## Documentation & Resources :books:
-
-      
-Visit the following links to learn more about TestMu AI's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
-
-* [TestMu AI Documentation](https://www.testmuai.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [TestMu AI Blog](https://www.testmuai.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)
-* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample)    
-
-## TestMu AI Community :busts_in_silhouette:
-
-The [TestMu AI Community](https://community.testmuai.com/?utm_source=github&utm_medium=repo&utm_campaign=python-selenium-sample) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
-
-## What's New At TestMu AI ❓
-
-To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/)
-
-## 🚀 LambdaTest is Now TestMu AI
-
-👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/) - we have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
-
-Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
-
-### 🔄 Our Rebrand Journey
-
-In 2017, we introduced LambdaTest with a clear mission: to become the world's most trusted cloud testing platform. We built a scalable, high-performance test cloud that eliminated flakiness, improved developer feedback cycles, and accelerated release velocity for teams worldwide.
-
-As LambdaTest grew, we expanded the platform into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the entire testing lifecycle. These capabilities enabled teams to test any stack, on any technology, at enterprise scale.
-
-Over time, we rebuilt the architecture to be AI-native from the ground up. What began as LambdaTest's high-performance testing cloud has now evolved into TestMu AI, an AI-native, multi-agent platform redefining modern quality engineering.
-
-We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
-
-👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
-
-### 🔭 Explore TestMu AI
-
-The same infrastructure LambdaTest customers relied on, now delivered through autonomous AI agents.
-
-- [KaneAI](https://www.testmuai.com/kane-ai/)
-- [Agent-to-Agent Testing](https://www.testmuai.com/agent-to-agent-testing/)
-- [HyperExecute](https://www.testmuai.com/hyperexecute/)
-- [Real Device Cloud](https://www.testmuai.com/real-device-cloud/)
-- [Pricing](https://www.testmuai.com/pricing/)
-- [Documentation](https://www.testmuai.com/support/docs/)
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
