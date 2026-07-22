@@ -49,7 +49,7 @@ class FirstSampleTest(unittest.TestCase):
         # Url
         print("Loading URL")
         driver.get(
-            "https://lambdatest.github.io/sample-todo-app/"
+            "https://www.testmuai.com/selenium-playground/todo-app/"
         )
 
         # Let's click on a element
