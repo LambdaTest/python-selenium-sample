@@ -3,6 +3,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.support.ui import WebDriverWait
 
 username = os.getenv("LT_USERNAME")  # Replace the username
 access_key = os.getenv("LT_ACCESS_KEY")  # Replace the access key
@@ -26,6 +27,9 @@ lt_options["name"] = "Selenium 4 Sample Test"
 lt_options["w3c"] = True
 lt_options["plugin"] = "python-python"
 options.set_capability("LT:Options", lt_options)
+
+# The "You have N of M tasks remaining." text
+COUNTER = "//*[contains(normalize-space(.),'tasks remaining') and not(*[contains(normalize-space(.),'tasks remaining')])]"
 
 
 # Steps to run Smart UI project (https://beta-smartui.lambdatest.com/)
@@ -66,6 +70,11 @@ class FirstSampleTest(unittest.TestCase):
         location.click()
         print("Clicked on the second element")
 
+        # Check the clicks changed the app, not just that the page rendered
+        assert driver.find_element(By.NAME, "li1").is_selected(), "li1 is not ticked"
+        counter = driver.find_element(By.XPATH, COUNTER).text
+        assert "3 of 5" in counter, "unexpected counter: " + counter
+
         # Take Smart UI screenshot
         # driver.execute_script("smartui.takeScreenshot")
 
@@ -74,6 +83,18 @@ class FirstSampleTest(unittest.TestCase):
         add_button = driver.find_element(By.ID, "addbutton")
         add_button.click()
         print("Added LambdaTest checkbox")
+
+        # Check the new task was added unticked and the input was cleared
+        new_task = driver.find_element(By.NAME, "li6")
+        assert not new_task.is_selected(), "new task starts ticked"
+        # the new row fades in, so wait for its text to be visible
+        WebDriverWait(driver, 5).until(
+            lambda d: "LambdaTest" in new_task.find_element(By.XPATH, "..").text,
+            "new task text missing",
+        )
+        counter = driver.find_element(By.XPATH, COUNTER).text
+        assert "4 of 6" in counter, "unexpected counter: " + counter
+        assert driver.find_element(By.ID, "sampletodotext").get_attribute("value") == "", "input not cleared"
 
         # print the heading
         search = driver.find_element(By.XPATH, "//h1[contains(@class,'font-bold')]")
